@@ -16,6 +16,14 @@
 
   const steps = [
     {
+      id: 0,
+      category: "setup",
+      title: "",
+      description: "",
+      code: "",
+      checked: true,
+    },
+    {
       id: 1,
       category: "setup",
       title: "Inizializza il progetto",
@@ -159,7 +167,8 @@
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap");
 
   :global(body) {
-    font-family: "Poppins", sans-serif !important;
+    font-family: "Poppins", sans-serif;
+    color: #001632 !important;
   }
 
   main {
@@ -167,6 +176,10 @@
     height: 100vh;
     padding: 40px;
     background-color: #eee;
+  }
+
+  .title {
+    font-weight: 700;
   }
 
   .steps {
