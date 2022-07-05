@@ -1,5 +1,5 @@
 <script>
-  import { CATEGORIES_LABELS, CREATION_STEPS, CLONE_STEPS, USER_SELECTIONS } from "./setup/constraints";
+  import { CATEGORIES_LABELS, CREATION_STEPS, CLONE_STEPS, USER_SELECTIONS, USER_SELECTION_LABELS } from "./setup/constraints";
 
   let steps = [];
   let stepsCompleted = 0;
@@ -33,26 +33,26 @@
 
 <section class="hero is-link">
   <div class="hero-body">
-    <p class="title is-1">Laravel Guide</p>
+    <p class="title is-1">Laravel Steps</p>
     <p class="subtitle">
       La guida passo passo per la creazione / clone di un progetto Laravel
     </p>
   </div>
 </section>
 
-<main>
+<section class="main section">
   <div class="user-selection">
-    <button class="selection" on:click={() => loadSteps(USER_SELECTIONS.CREATION)}>
-      Creazione progetto
+    <button class="selection" class:active={userSelection === USER_SELECTIONS.CREATION} on:click={() => loadSteps(USER_SELECTIONS.CREATION)}>
+      {USER_SELECTION_LABELS.CREATION}
     </button>
-    <button class="selection" on:click={() => loadSteps(USER_SELECTIONS.CLONE)}>
-      Clone progetto esistente
+    <button class="selection" class:active={userSelection === USER_SELECTIONS.CLONE} on:click={() => loadSteps(USER_SELECTIONS.CLONE)}>
+      {USER_SELECTION_LABELS.CLONE}
     </button>
   </div>
 
   {#if userSelection}
     <div class="progress-wrapper">
-      <h3 class="title is-3">Completamento ({stepsCompleted} su {steps.length})</h3>
+      <h3 class="title is-3">{USER_SELECTION_LABELS[userSelection]} ({stepsCompleted} su {steps.length})</h3>
       <progress
         class="progress is-info"
         value="{percStepsCompleted ? percStepsCompleted : 1}"
@@ -82,7 +82,7 @@
       {/each}
     </div>
   {/if}
-</main>
+</section>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap");
@@ -102,6 +102,7 @@
   }
 
   .selection {
+    height: 80px;
     margin: 0 20px;
     padding: 16px 24px;
     border: 4px solid transparent;
@@ -119,12 +120,19 @@
     transition: .5s;
   }
 
+  .selection.active {
+    border: 4px solid #00de6b;
+    background-color: transparent;
+    transition: .5s;
+  }
+
   .progress-wrapper {
     height: 120px;
   }
 
-  main {
+  .main {
     padding: 40px;
+    background-color: rgb(236, 236, 236);
   }
 
   .title {

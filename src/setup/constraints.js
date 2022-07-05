@@ -19,8 +19,13 @@ export const CATEGORIES_LABELS = Object.freeze({
 });
 
 export const USER_SELECTIONS = Object.freeze({
-  CREATION: 'CREATION',
-  CLONE: 'CLONE',
+  CREATION: "CREATION",
+  CLONE: "CLONE",
+});
+
+export const USER_SELECTION_LABELS = Object.freeze({
+  CREATION: "Creazione progetto",
+  CLONE: "Clone progetto",
 });
 
 export const CREATION_STEPS = [
